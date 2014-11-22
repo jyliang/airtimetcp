@@ -14,6 +14,8 @@
 		4FF217A31A20E9BC0005449B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF217A21A20E9BC0005449B /* Images.xcassets */; };
 		4FF217A61A20E9BC0005449B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF217A41A20E9BC0005449B /* LaunchScreen.xib */; };
 		4FF217B21A20E9BC0005449B /* airtimetcpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217B11A20E9BC0005449B /* airtimetcpTests.m */; };
+		4FF217BF1A20EAD40005449B /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217BE1A20EAD40005449B /* GCDAsyncSocket.m */; };
+		4FF217C51A21038A0005449B /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217C41A21038A0005449B /* NetworkManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		4FF217AB1A20E9BC0005449B /* airtimetcpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = airtimetcpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF217B01A20E9BC0005449B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FF217B11A20E9BC0005449B /* airtimetcpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = airtimetcpTests.m; sourceTree = "<group>"; };
+		4FF217BD1A20EAD40005449B /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		4FF217BE1A20EAD40005449B /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		4FF217C31A21038A0005449B /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		4FF217C41A21038A0005449B /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +87,13 @@
 		4FF217941A20E9BC0005449B /* airtimetcp */ = {
 			isa = PBXGroup;
 			children = (
+				4FF217BB1A20EAD40005449B /* lib */,
 				4FF217991A20E9BC0005449B /* AppDelegate.h */,
 				4FF2179A1A20E9BC0005449B /* AppDelegate.m */,
 				4FF2179C1A20E9BC0005449B /* ViewController.h */,
 				4FF2179D1A20E9BC0005449B /* ViewController.m */,
+				4FF217C31A21038A0005449B /* NetworkManager.h */,
+				4FF217C41A21038A0005449B /* NetworkManager.m */,
 				4FF2179F1A20E9BC0005449B /* Main.storyboard */,
 				4FF217A21A20E9BC0005449B /* Images.xcassets */,
 				4FF217A41A20E9BC0005449B /* LaunchScreen.xib */,
@@ -117,6 +126,23 @@
 				4FF217B01A20E9BC0005449B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FF217BB1A20EAD40005449B /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4FF217BC1A20EAD40005449B /* TCP */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		4FF217BC1A20EAD40005449B /* TCP */ = {
+			isa = PBXGroup;
+			children = (
+				4FF217BD1A20EAD40005449B /* GCDAsyncSocket.h */,
+				4FF217BE1A20EAD40005449B /* GCDAsyncSocket.m */,
+			);
+			path = TCP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +245,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FF217BF1A20EAD40005449B /* GCDAsyncSocket.m in Sources */,
 				4FF2179E1A20E9BC0005449B /* ViewController.m in Sources */,
 				4FF2179B1A20E9BC0005449B /* AppDelegate.m in Sources */,
+				4FF217C51A21038A0005449B /* NetworkManager.m in Sources */,
 				4FF217981A20E9BC0005449B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +440,7 @@
 				4FF217B71A20E9BC0005449B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4FF217B81A20E9BC0005449B /* Build configuration list for PBXNativeTarget "airtimetcpTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +449,7 @@
 				4FF217BA1A20E9BC0005449B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

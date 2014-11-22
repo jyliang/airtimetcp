@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "NetworkManager.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) NetworkManager *networkManager;
 
 @end
 
@@ -17,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.networkManager = [[NetworkManager alloc] init];
+    [self.networkManager connect];
+
 }
 
 - (void)didReceiveMemoryWarning {
