@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) GCDAsyncSocket *asyncSocket;
 
+- (void)processFirstThenConnectIfNeeded;
 - (void)connect;
 
 @end

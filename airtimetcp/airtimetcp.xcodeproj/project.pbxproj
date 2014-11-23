@@ -16,6 +16,8 @@
 		4FF217B21A20E9BC0005449B /* airtimetcpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217B11A20E9BC0005449B /* airtimetcpTests.m */; };
 		4FF217BF1A20EAD40005449B /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217BE1A20EAD40005449B /* GCDAsyncSocket.m */; };
 		4FF217C51A21038A0005449B /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217C41A21038A0005449B /* NetworkManager.m */; };
+		4FF217D01A2215840005449B /* PackageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217CD1A2215840005449B /* PackageProcessor.m */; };
+		4FF217D11A2215840005449B /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217CF1A2215840005449B /* Packet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,10 @@
 		4FF217BE1A20EAD40005449B /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		4FF217C31A21038A0005449B /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		4FF217C41A21038A0005449B /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		4FF217CC1A2215840005449B /* PackageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageProcessor.h; sourceTree = "<group>"; };
+		4FF217CD1A2215840005449B /* PackageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageProcessor.m; sourceTree = "<group>"; };
+		4FF217CE1A2215840005449B /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
+		4FF217CF1A2215840005449B /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,10 @@
 				4FF2179F1A20E9BC0005449B /* Main.storyboard */,
 				4FF217A21A20E9BC0005449B /* Images.xcassets */,
 				4FF217A41A20E9BC0005449B /* LaunchScreen.xib */,
+				4FF217CC1A2215840005449B /* PackageProcessor.h */,
+				4FF217CD1A2215840005449B /* PackageProcessor.m */,
+				4FF217CE1A2215840005449B /* Packet.h */,
+				4FF217CF1A2215840005449B /* Packet.m */,
 				4FF217951A20E9BC0005449B /* Supporting Files */,
 			);
 			path = airtimetcp;
@@ -245,9 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FF217D01A2215840005449B /* PackageProcessor.m in Sources */,
 				4FF217BF1A20EAD40005449B /* GCDAsyncSocket.m in Sources */,
 				4FF2179E1A20E9BC0005449B /* ViewController.m in Sources */,
 				4FF2179B1A20E9BC0005449B /* AppDelegate.m in Sources */,
+				4FF217D11A2215840005449B /* Packet.m in Sources */,
 				4FF217C51A21038A0005449B /* NetworkManager.m in Sources */,
 				4FF217981A20E9BC0005449B /* main.m in Sources */,
 			);
