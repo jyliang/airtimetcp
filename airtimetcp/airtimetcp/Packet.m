@@ -10,22 +10,24 @@
 
 @implementation Packet
 
+- (NSData *)getFilledData:(NSUInteger)i {
+    uint16_t space = self.len%4;
+    NSMutableData *data = [NSMutableData dataWithData:[self.data subdataWithRange:NSMakeRange(i, self.data.length-i)]];
+    for (int s = 0; s < 4 - space; s++) {
+        UInt8 filler= 0xab;
+        [data appendBytes:&filler length:sizeof(filler)];
+    }
+    return data;
+}
+
 - (BOOL)isValidPacket {
     uint16_t space = self.len%4;
-
     uint32_t chk = OSReadBigInt32(self.headerData.bytes, 0);
     uint32_t chunk;
     void *bytes = (void*)[self.data bytes];
-    for (NSUInteger i = 0; i < self.data.length; i += sizeof(int32_t)) {
-        if (i+sizeof(int32_t) > self.data.length) {
-            NSLog(@"last bit");
-            NSMutableData *data = [NSMutableData dataWithData:[self.data subdataWithRange:NSMakeRange(i, self.data.length-i)]];
-           NSLog(@"last bit data %@", data);
-            for (int s = 0; s < 4 - space; s++) {
-                UInt8 filler= 0xab;
-                [data appendBytes:&filler length:sizeof(filler)];
-            }
-           NSLog(@"last bit filled data %@", data);
+    for (NSUInteger i = 0; i < self.data.length; i += sizeof(uint32_t)) {
+        if (space!= 0 && i > (self.data.length - sizeof(uint32_t))) {
+            NSData *data = [self getFilledData:i];
             chunk = OSReadBigInt32([data bytes], 0);
             chk = chk ^ chunk;
         } else {
@@ -34,15 +36,7 @@
         }
     }
 
-    if (chk == self.chk) {
-        NSLog(@"very valid packet");
-        return YES;
-    } else {
-        NSLog(@"invalid packet");
-        return NO;
-    }
-
-    return YES;
+    return (chk == self.chk);
 }
 
 @end

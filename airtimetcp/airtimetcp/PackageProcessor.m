@@ -7,10 +7,12 @@
 //
 
 #import "PackageProcessor.h"
+#import "SSZipArchive.h"
 
 @interface PackageProcessor ()
 
 @property (nonatomic, strong) NSMutableDictionary *packages;
+@property (nonatomic, strong) NSMutableDictionary *invalidPackages;
 
 @end
 
@@ -21,13 +23,13 @@
     self = [super init];
     if (self) {
         self.packages = [[NSMutableDictionary alloc] init];
+        self.invalidPackages = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 - (uint32_t)processNewPacketHeader:(NSData *)data {
-    NSLog(@"header %@", data);
-    void *bytes = [data bytes];
+    void *bytes = (void *)[data bytes];
     uint32_t seq = OSReadBigInt32(bytes, 0);
     uint32_t chk = OSReadBigInt32(bytes, 4);
     uint32_t len = OSReadBigInt32(bytes, 8);
@@ -40,10 +42,11 @@
 }
 
 - (void)processCurrentPacketWithData:(NSData *)data {
-    NSLog(@"data %@", data);
     self.currentPacket.data = data;
     if ([self.currentPacket isValidPacket]) {
         [self.packages setObject:self.currentPacket forKey:[NSNumber numberWithUnsignedInt:self.currentPacket.seq]];
+    } else {
+        [self.invalidPackages setObject:self.currentPacket forKey:[NSNumber numberWithUnsignedInt:self.currentPacket.seq]];
     }
     self.currentPacket = nil;
 }
@@ -64,41 +67,20 @@
 }
 
 - (void)saveDataToDisk:(NSData *)data {
-    NSString *filename = @"processed.dat";
-    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);
-    NSString *documentsDirectory = [pathArray objectAtIndex:0];
-    NSString *soundPath = [documentsDirectory stringByAppendingPathComponent:filename];
-
-    [data writeToFile:soundPath atomically:YES];
-
+    NSString *filename = kProcessedFileName;
+    [self saveDataToDisk:data withFileName:filename];
 }
 
-- (void)processPackage:(NSData *)data {
-    void *bytes = [data bytes];
-    NSMutableArray *ary = [NSMutableArray array];
-    NSUInteger offset = 0;
-    while (offset < [data length]) {
-        NSUInteger seq = OSReadBigInt32(bytes, offset);
-        NSUInteger chk = OSReadBigInt32(bytes, offset+4);
-        NSUInteger len = OSReadBigInt32(bytes, offset+8);
+- (void)saveDataToDisk:(NSData *)data withFileName:(NSString *)filename{
+    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);
+    NSString *documentsDirectory = [pathArray objectAtIndex:0];
+    NSString *soundPath = [documentsDirectory stringByAppendingPathComponent:[filename stringByAppendingString:kFileExtSound]];
+    [data writeToFile:soundPath atomically:YES];
 
-        NSUInteger start = offset+12;
-        NSUInteger end = offset+12+len;
-
-        offset = end;
-
-        NSData *subData = [data subdataWithRange:NSMakeRange(start, len)];
-
-        self.packages[[NSNumber numberWithUnsignedInteger:seq]] = subData;
-
-//        for (NSUInteger i = start; i < end; i += sizeof(int32_t)) {
-//            int32_t elem = OSReadLittleInt32(bytes, i);
-//            [ary addObject:[NSNumber numberWithInt:elem]];
-//        }
-    }
-
-    NSLog(@"%@",self.packages);
-
+    NSString *zipPath = [documentsDirectory stringByAppendingPathComponent:[filename stringByAppendingString:kFileExtZip]];
+    self.zipPath = zipPath;
+    NSArray *inputPaths = @[soundPath];
+    [SSZipArchive createZipFileAtPath:zipPath withFilesAtPaths:inputPaths];
 }
 
 @end

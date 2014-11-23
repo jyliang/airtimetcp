@@ -18,6 +18,13 @@
 		4FF217C51A21038A0005449B /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217C41A21038A0005449B /* NetworkManager.m */; };
 		4FF217D01A2215840005449B /* PackageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217CD1A2215840005449B /* PackageProcessor.m */; };
 		4FF217D11A2215840005449B /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217CF1A2215840005449B /* Packet.m */; };
+		4FF217DF1A2231550005449B /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217D51A2231550005449B /* ioapi.c */; };
+		4FF217E01A2231550005449B /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217D71A2231550005449B /* mztools.c */; };
+		4FF217E11A2231550005449B /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217D91A2231550005449B /* unzip.c */; };
+		4FF217E21A2231550005449B /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217DB1A2231550005449B /* zip.c */; };
+		4FF217E31A2231550005449B /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF217DE1A2231550005449B /* SSZipArchive.m */; };
+		4FF217E51A2232690005449B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF217E41A2232690005449B /* MessageUI.framework */; };
+		4FF217E71A2233B60005449B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF217E61A2233B60005449B /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +59,19 @@
 		4FF217CD1A2215840005449B /* PackageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageProcessor.m; sourceTree = "<group>"; };
 		4FF217CE1A2215840005449B /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
 		4FF217CF1A2215840005449B /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
+		4FF217D41A2231550005449B /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		4FF217D51A2231550005449B /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		4FF217D61A2231550005449B /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		4FF217D71A2231550005449B /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		4FF217D81A2231550005449B /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		4FF217D91A2231550005449B /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		4FF217DA1A2231550005449B /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		4FF217DB1A2231550005449B /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		4FF217DC1A2231550005449B /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		4FF217DD1A2231550005449B /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		4FF217DE1A2231550005449B /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		4FF217E41A2232690005449B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		4FF217E61A2233B60005449B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FF217E71A2233B60005449B /* libz.dylib in Frameworks */,
+				4FF217E51A2232690005449B /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +97,8 @@
 		4FF217891A20E9BC0005449B = {
 			isa = PBXGroup;
 			children = (
+				4FF217E61A2233B60005449B /* libz.dylib */,
+				4FF217E41A2232690005449B /* MessageUI.framework */,
 				4FF217941A20E9BC0005449B /* airtimetcp */,
 				4FF217AE1A20E9BC0005449B /* airtimetcpTests */,
 				4FF217931A20E9BC0005449B /* Products */,
@@ -141,6 +165,7 @@
 		4FF217BB1A20EAD40005449B /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				4FF217D21A2231550005449B /* SSZipArchive */,
 				4FF217BC1A20EAD40005449B /* TCP */,
 			);
 			path = lib;
@@ -153,6 +178,32 @@
 				4FF217BE1A20EAD40005449B /* GCDAsyncSocket.m */,
 			);
 			path = TCP;
+			sourceTree = "<group>";
+		};
+		4FF217D21A2231550005449B /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				4FF217D31A2231550005449B /* minizip */,
+				4FF217DD1A2231550005449B /* SSZipArchive.h */,
+				4FF217DE1A2231550005449B /* SSZipArchive.m */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+		4FF217D31A2231550005449B /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				4FF217D41A2231550005449B /* crypt.h */,
+				4FF217D51A2231550005449B /* ioapi.c */,
+				4FF217D61A2231550005449B /* ioapi.h */,
+				4FF217D71A2231550005449B /* mztools.c */,
+				4FF217D81A2231550005449B /* mztools.h */,
+				4FF217D91A2231550005449B /* unzip.c */,
+				4FF217DA1A2231550005449B /* unzip.h */,
+				4FF217DB1A2231550005449B /* zip.c */,
+				4FF217DC1A2231550005449B /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,10 +306,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FF217E21A2231550005449B /* zip.c in Sources */,
 				4FF217D01A2215840005449B /* PackageProcessor.m in Sources */,
 				4FF217BF1A20EAD40005449B /* GCDAsyncSocket.m in Sources */,
+				4FF217E01A2231550005449B /* mztools.c in Sources */,
+				4FF217DF1A2231550005449B /* ioapi.c in Sources */,
 				4FF2179E1A20E9BC0005449B /* ViewController.m in Sources */,
 				4FF2179B1A20E9BC0005449B /* AppDelegate.m in Sources */,
+				4FF217E11A2231550005449B /* unzip.c in Sources */,
+				4FF217E31A2231550005449B /* SSZipArchive.m in Sources */,
 				4FF217D11A2215840005449B /* Packet.m in Sources */,
 				4FF217C51A21038A0005449B /* NetworkManager.m in Sources */,
 				4FF217981A20E9BC0005449B /* main.m in Sources */,

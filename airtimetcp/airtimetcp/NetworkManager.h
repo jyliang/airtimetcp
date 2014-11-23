@@ -8,13 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol NetworkManagerDelegate <NSObject>
+
+- (void)updateStatusTo:(NSString *)statusText;
+- (void)showEmail:(NSString*)file;
+@end
+
 @class GCDAsyncSocket;
 
 @interface NetworkManager : NSObject
 
+@property (nonatomic, weak) id<NetworkManagerDelegate> delegate;
 @property (nonatomic, strong) GCDAsyncSocket *asyncSocket;
 
-- (void)processFirstThenConnectIfNeeded;
 - (void)connect;
 
 @end
